@@ -1,0 +1,12 @@
+<h1>Add Product</h1>
+<form #form="ngForm" (ngSubmit)="addProduct(form)">
+    <div class="form-group">
+        Name: <input class="form-control mb-2" [(ngModel)]="product.name" type="text" name="name" id="name" />
+        Price : <input class="form-control mb-2" [(ngModel)]="product.price" type="number" name="price" id="price" />
+        Quantity: <input class="form-control mb-2" [(ngModel)]="product.quantity" type="number" name="quantity"
+            id="quantity" />
+        Remarks: <textarea class="form-control mb-2" [(ngModel)]="product.remarks" type="text" name="remarks"
+            id="remarks"></textarea>
+        <button class="btn btn-primary" type="submit">Add Product</button>
+    </div>
+</form>

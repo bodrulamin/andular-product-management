@@ -1,0 +1,13 @@
+<h1>Login</h1>
+<form (ngSubmit)='login()'>
+    <div class="form-group">
+        Username: <input class="form-control mb-2" [(ngModel)]="user.username" type="text" name="name" id="name" />
+        Password : <input class="form-control mb-2" [(ngModel)]="user.password" type="password" name="password"
+            id="password" />
+        <button class="btn btn-primary me-2"  type="submit">Login</button>
+        <button class="btn btn-danger" type="reset">Reset</button>
+
+   
+    </div>
+</form>
+
