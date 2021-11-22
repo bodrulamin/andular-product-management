@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Product } from './product.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ProductService } from '../services/product.service';
+import { ApiResponse } from '../appmodelclass/apirespons';
 
 
 @Component({
@@ -12,22 +14,42 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ProductComponent implements OnInit {
 
   product: Product = new Product();
-  
+  adding: boolean = true;
+  products: Product[] = []
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private service: ProductService) { }
 
   ngOnInit(): void {
-
+    this.service.productList.subscribe(plist => this.products = plist)
   }
 
-  addProduct(form: NgForm) {
-    const header = { 'content-Type': 'application/json' }
-    this.http.post('http://localhost:8080/add_product', JSON.stringify(this.product), { headers: header, })
-      .subscribe(data => {
-        console.log(data);
-      })
+  addProduct(){
+    console.log('add method called');
+
+    this.service.addProduct(this.product);
+    this.product = new Product();
+  }
+
+  delete(product: Product) {
+    console.log(product);
+    this.service.delete(product);
+    this.products = this.products.filter(item => item.id != product.id)
+  }
 
 
+  updateProduct(product: Product) {
+    console.log('update method called');
+    this.adding = true;
+    this.product = new Product();
+    this.products[product.id] = product;
+
+
+  }
+  editButton(product: Product) {
+
+    this.product = product;
+    this.adding = false;
   }
 
 

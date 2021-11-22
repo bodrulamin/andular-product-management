@@ -1,5 +1,11 @@
 {
-  
+  "products": [
+    {
+      "id": 1,
+      "name": "Mouse",
+      "price": 0,
+      "quantity": 0,
+      "remarks": ""
+    }
+  ]
 }
-
-

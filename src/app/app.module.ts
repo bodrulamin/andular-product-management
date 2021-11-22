@@ -9,6 +9,7 @@ import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SuccessComponent } from './success/success.component';
+import { NoteComponent } from './note/note.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SuccessComponent } from './success/success.component';
     ProductComponent,
     LoginComponent,
     RegisterComponent,
-    SuccessComponent
+    SuccessComponent,
+    NoteComponent,
   ],
   imports: [
     BrowserModule,

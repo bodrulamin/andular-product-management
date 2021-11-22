@@ -1,5 +1,5 @@
 <h1>Add Product</h1>
-<form #form="ngForm" (ngSubmit)="addProduct(form)">
+<form #form="ngForm" (ngSubmit)="adding? addProduct(): updateProduct(product)">
     <div class="form-group">
         Name: <input class="form-control mb-2" [(ngModel)]="product.name" type="text" name="name" id="name" />
         Price : <input class="form-control mb-2" [(ngModel)]="product.price" type="number" name="price" id="price" />
@@ -7,6 +7,32 @@
             id="quantity" />
         Remarks: <textarea class="form-control mb-2" [(ngModel)]="product.remarks" type="text" name="remarks"
             id="remarks"></textarea>
-        <button class="btn btn-primary" type="submit">Add Product</button>
+        <button class="btn btn-primary" type="submit">{{adding? 'Add Product' :  'Update Product'}}</button>
     </div>
 </form>
+
+ 
+
+<table class="table mt-3">
+    <tr>
+        <th>ID</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Remarks</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let product of products">
+      
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.remarks}}</td>
+        <td>
+            <button class="btn btn-outline-danger me-2" (click)='delete(product)'>Delete</button> 
+            <button class="btn btn-outline-info" (click)='editButton(product)'>Edit</button>
+        
+        </td>
+    </tr>
+</table>

@@ -1,5 +1,6 @@
 export class Product{
-    name: String = 'bodrul';
+    id: number = 0;
+    name: String = '';
     price: Number = 0.0;
     quantity: Number = 0;
     remarks : String = '';
