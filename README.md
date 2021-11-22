@@ -1,8 +1,8 @@
 # ProductManagement
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
-Servlet Backend API [ProductAPI](https://github.com/bodrulamin/ProductAPI.git) 
+
+## Servlet Backend API [ProductAPI](https://github.com/bodrulamin/ProductAPI.git) 
 
 ## Development server
 
