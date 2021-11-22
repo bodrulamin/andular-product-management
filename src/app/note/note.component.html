@@ -1,0 +1,17 @@
+<p>note works!</p>
+<p>{{message}}</p>
+
+<input type="number" [(ngModel)] = count/>
+
+
+
+<div [ngClass] = "(count < 1)? 'bg-danger' : 'bg-info'"  [ngSwitch]="count">
+    <span *ngSwitchCase="2">There are two products</span>
+    <span *ngSwitchCase="5">There are five products</span>
+    <span *ngSwitchDefault>This is the default</span>
+</div>
+
+<div *ngIf="count == 0" class="bg-warning">This is warning there are no products *ngIf</div>
+
+<div *="count == 0" class="bg-warning">This is warning there are no products *ngIf</div>
+
