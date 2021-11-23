@@ -10,7 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SuccessComponent } from './success/success.component';
 import { NoteComponent } from './note/note.component';
-
+import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +25,11 @@ import { NoteComponent } from './note/note.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-  HttpClientModule 
-  
-    
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

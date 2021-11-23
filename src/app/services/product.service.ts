@@ -11,7 +11,7 @@ import { Product } from '../product/product.model';
 })
 export class ProductService {
   apiUrl: string = 'http://localhost:8080/';
-  addApi: string = this.apiUrl + 'add_product';
+  productApi: string = this.apiUrl + 'product';
   plistApi: string = this.apiUrl + 'plist';
 
   products = new BehaviorSubject<Product[]>([]);
@@ -21,26 +21,35 @@ export class ProductService {
   constructor(private http: HttpClient) {
     this.updateList();
   }
+
+
   updateList() {
     this.http.get<ApiResponse>(this.plistApi).subscribe(
       res => {
-        console.log(res.data.products);
+        //  console.log(res);
+
+
         this.products.next(res.data.products)
       }
     )
   }
 
 
-  addProduct(product: Product) {
+  addProduct(product: Product) :Observable<any> {
     const header = { 'content-Type': 'application/json' }
-    this.http.post(this.addApi, JSON.stringify(product), { headers: header, })
-      .subscribe(data => {
-        this.updateList();
-      })
+   return this.http.post(this.productApi, JSON.stringify(product), { headers: header, })
+     
+  }
+
+  update(product: Product) {
+    const header = { 'content-Type': 'application/json' }
+   return this.http.put<ApiResponse>(this.productApi, JSON.stringify(product), { headers: header, })
+    
   }
 
 
   delete(product: Product) {
-    this.http.delete(this.apiUrl + product.id).subscribe(product => console.log(product))
+   return this.http.delete(this.productApi + "?id=" + product.id)
+   
   }
 }
